@@ -1,0 +1,19 @@
+{
+  "name": "interview-genie",
+  "version": "1.0.0",
+  "description": "InterviewGenie is an AI-powered mock interview assistant helping users practice job interviews by generating tailored mock interview questions based on job descriptions and providing personalized feedback on interview performance.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "author": "Yuanhui Xu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "mongoose": "^8.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
