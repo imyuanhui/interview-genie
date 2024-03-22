@@ -7,9 +7,9 @@ const interviewSchema = new mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    completed: {
-        type: Boolean,
-        default: false
+    status: {
+        type: String,
+        default: "Pending"
     },
     title: {
         type: String,

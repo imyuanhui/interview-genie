@@ -6,22 +6,22 @@ InterviewGenie is an AI-powered mock interview assistant designed and developed 
 
 ### As a Guest User:
 
-1. [ ] Visit the landing page of the InterviewGenie website.
-1. See a brief overview of what InterviewGenie offers.
-1. Sign up for an account.
+1. [x] Visit the landing page of the InterviewGenie website.
+1. [x] See a brief overview of what InterviewGenie offers.
+1. [ ] Sign up for an account.
 
 ### As a Registered User:
 
-1. Log in to the InterviewGenie account.
-1. Have a personalized dashboard after logging in.
-1. Have a guidance for how to initialize a new mock interview after first logging in.
-1. Create a new mock interview by inputting job details.
-1. View and manage mock interview sessions.
-1. Initiate mock interview practice sessions based on my mock interview sessions.
-1. Record responses during mock interview practice sessions.
-1. Receive feedback on my mock interview performance, if available.
-1. Update profile information.
-1. Log out of the InterviewGenie account.
+1. [ ] Log in to the InterviewGenie account.
+1. [x] Have a personalized dashboard after logging in.
+1. [ ] Have a guidance for how to initialize a new mock interview after first logging in.
+1. [ ] Create a new mock interview by inputting job details.
+1. [ ] View and manage mock interview sessions.
+1. [ ] Initiate mock interview practice sessions based on my mock interview sessions.
+1. [ ] Record responses during mock interview practice sessions.
+1. [ ] Receive feedback on my mock interview performance, if available.
+1. [ ] Update profile information.
+1. [ ] Log out of the InterviewGenie account.
 
 ## Features
 
