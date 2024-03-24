@@ -20,7 +20,6 @@ export const interviewsApiSlice = apiSlice.injectEndpoints({
             validateStatus: (response, result) => {
                 return response.status === 200 && !result.isError
             },
-            keepUnusedDataFor: 5,
             transformResponse: responseData => {
                 const loadedInterviews = responseData.map(interview => {
                     interview.id = interview._id
@@ -36,11 +35,49 @@ export const interviewsApiSlice = apiSlice.injectEndpoints({
                     ]
                 } else return [{ type: 'interview', id:'LIST' }]
             }
+        }),
+        addNewInterview: builder.mutation({
+            query: initialInterviewData => ({
+                url: '/interviews',
+                method: 'POST',
+                body: {
+                    ...initialInterviewData,
+                }
+            }),
+            invalidatesTags: [
+                { type: 'Interview', id: "LIST" }
+            ]
+        }),
+        updateInterview: builder.mutation({
+            query: initialInterviewData => ({
+                url: '/interviews',
+                method: 'PATCH',
+                body: {
+                    ...initialInterviewData,
+                }
+            }),
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Interview', id: arg.id }
+            ]
+        }),
+        deleteInterview: builder.mutation({
+            query: ({ id }) => ({
+                url: `/interviews`,
+                method: 'DELETE',
+                body: { id }
+            }),
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Interview', id: arg.id }
+            ]
         })
     })
 })
 
-export const { useGetInterviewsQuery } = interviewsApiSlice
+export const {
+    useGetInterviewsQuery,
+    useAddNewInterviewMutation,
+    useUpdateInterviewMutation,
+    useDeleteInterviewMutation} = interviewsApiSlice
 
 const selectinterviewsResult = interviewsApiSlice.endpoints.getInterviews.select()
 
