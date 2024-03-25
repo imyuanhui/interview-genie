@@ -50,6 +50,42 @@ const login = asyncHandler(async (req, res) => {
     res.json({ accessToken })
 })
 
+// @desc Signup
+// @route POST /auth/signup
+// @access Public
+const signup = asyncHandler(async (req, res) => {
+    const { username, password, email } = req.body
+
+    // Validate username and password fields
+    if (!username || !password || !email) {
+        return res.status(400).json({ message: 'All fields are required' })
+    }
+
+    // Check if the username is already taken
+    const existingUser = await User.findOne({ username }).exec()
+    if (existingUser) {
+        return res.status(400).json({ message: 'Username already exists' })
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    // Create a new user
+    const newUser = new User({
+        username,
+        password: hashedPassword,
+        email
+    })
+
+    // Create and store new user
+    const user = await User.create(newUser) 
+    if (user) {
+        res.status(201).json({ message: `New user ${username} created` }) 
+    } else {
+        res.status(400).json({ message: 'Invalid user data received' }) 
+    }
+})
+
 // @desc Refresh
 // @route GET /auth/refresh
 // @access Public
@@ -96,4 +132,4 @@ const logout = (req, res) => {
     res.json({ message: 'Cookies cleared' })
 }
 
-module.exports = { login, refresh, logout }
+module.exports = { login, signup, refresh, logout }
