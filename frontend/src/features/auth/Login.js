@@ -52,7 +52,7 @@ const Login = () => {
             } else {
                 setErrMsg(err.data?.message)
             }
-            errRef.current.focus()
+            //errRef.current.focus()
         }
     }
 
@@ -62,8 +62,8 @@ const Login = () => {
 
     const content = (
         <section className='public'>
-            <header>
-                <h1>Login</h1>
+            <header className='login__header'>
+                <h1><Link to="/">InterviewGenie</Link></h1>
             </header>
             <main className='login'>
                 <p
@@ -74,7 +74,7 @@ const Login = () => {
                     {errMsg}
                 </p>
 
-                <form className='form' onSubmit={handleSubmit}>
+                <form className='form login__form' onSubmit={handleSubmit}>
                     <label htmlFor='username'>Username: </label>
                     <input
                         className='form__input'
@@ -98,7 +98,7 @@ const Login = () => {
                         required
                     />
 
-                    <button className='form__submit-button'>Sign In</button>
+                    <button className='form__submit-button'>Login</button>
 
                     <label htmlFor='persist' className='form__persist'>
                     <input
@@ -110,12 +110,9 @@ const Login = () => {
                         />
                         Trust this device
                     </label>
-                
                 </form>
+                <p className='goto'>Go to <Link to="/signup">Signup</Link></p>
             </main>
-            <footer>
-                <Link to="/">Back to home</Link>
-            </footer>
         </section>
     )
 

@@ -10,13 +10,13 @@
 
 :root {
   /* COLORS */
-  --BGCOLOR: #0F172A;
-  --BORDER-COLOR: #FFF;
-  --COLOR: #FFF;
+  --BGCOLOR: #FFF;
+  --BORDER-COLOR: #0F172A;
+  --COLOR: #0F172A;
   --ERROR: firebrick;
   --INACTIVE: lightgray;
-  --LINK-COLOR: whitesmoke;
-  --LINK-HOVER: rgba(245, 245, 245, 0.9);
+  --LINK-COLOR: rgb(2, 2, 55);
+  --LINK-HOVER: rgba(150, 151, 165, 0.9);
   --INTERVIEW-BGCOLOR: hsla(240, 64%, 27%, 0.65);
   --STATUS-PENDING: orange;
   --STATUS-ONGOING: blue;
@@ -71,7 +71,6 @@ body {
   min-height: 100vh;
   background-color: var(--BGCOLOR);
   color: var(--COLOR);
-  background-image: url('./img/background.jpg');
   background-size: cover;
   background-position: top right;
   background-blend-mode: multiply;
@@ -104,7 +103,7 @@ a:focus-visible {
   color: var(--LINK-HOVER);
 }
 
-/* || PAGES */
+/* || PUBLIC */
 
 .public,
 .welcome {
@@ -119,20 +118,62 @@ a:focus-visible {
 }
 
 .public__main,
-.login {
+.login,
+.signup {
   flex-grow: 1;
-  border-top: 2px solid var(--BORDER-COLOR);
-  border-bottom: 2px solid var(--BORDER-COLOR);
   padding: 1em 0;
 }
 
-.public__addr {
-  margin-top: 1em;
+.public__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.public__main h1 {
+  font-size: 120px;
+  font-weight: 900;
+}
+
+.public__main h3 {
+  font-size: 60px;
+}
+
+.public__header {
+  text-align: end;
+}
+
+.public__footer {
+  text-align: center;
+  font-size: small;
 }
 
 .welcome a::before {
   content: "➜ "
 }
+
+/* || Login & Signup */
+.login,
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__form,
+.signup__form {
+  padding: 2em;
+  border: var(--BORDER-COLOR) 1px solid;
+  border-radius: 5%;
+}
+
+.goto {
+  margin-top: 1em;
+  font-size: medium;
+}
+
 
 /* || DASH HEADER, CONTAINER & FOOTER */
 
@@ -292,6 +333,11 @@ tr {
 .form__submit-button {
   padding: 0.5em;
   border-radius: 15px;
+}
+
+.form__submit-button:hover {
+  color: grey;
+  border: none;
 }
 
 .form__input--text {

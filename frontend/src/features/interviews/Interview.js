@@ -12,8 +12,8 @@ const Interview = ({ interviewId }) => {
     const navigate = useNavigate()
 
     if (interview) {
-        const created = new Date(interview.createdAt)
-            .toLocaleDateString('en-US', { day: 'numeric', month: 'long' })
+        /*const created = new Date(interview.createdAt)
+            .toLocaleDateString('en-US', { day: 'numeric', month: 'long' })*/
         const updated = new Date(interview.updatedAt)
             .toLocaleDateString('en-US', { day: 'numeric', month: 'long' })
         const handleEdit = () => navigate(`/dash/interviews/${interviewId}`)

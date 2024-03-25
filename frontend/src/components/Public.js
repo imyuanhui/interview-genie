@@ -3,24 +3,15 @@ import { Link } from "react-router-dom";
 const Public = () => {
     const content = (
         <section className="public">
-            <header>
-                <h1>Welcome to use <span>InterviewGenie</span></h1>
+            <header className="public__header">
+                <p><Link to="/signup">Signup </Link> | <span><Link to="/login">Login</Link></span></p>
             </header>
             <main className="public__main">
-                <p>InterviewGenie is an AI-powered mock interview assistant
-                    designed and developed by Yuanhui Xu
-                    to help users practice job interviews
-                    by generating tailored mock interview questions
-                    based on job descriptions
-                    and providing personalized feedback
-                    on interview performance.</p>
-                <address className="public__addr">
-                    Yuanhui Xu<br />
-                    <a href="tel:+86 123456">123-456</a>
-                </address>
+                <h1 className="public__main-title">InterviewGenie</h1>
+                <h3 className="public__main-subtitle">Your best mock interviewer.</h3>
             </main>
-            <footer>
-                <Link to="/login">User Login</Link>
+            <footer className="public__footer">
+                <p>developed by <a href="https://imyuanhui.github.io">Yuanhui Xu</a></p>
             </footer>
         </section>
     );
