@@ -9,7 +9,7 @@ const InterviewsList = () => {
     isSuccess,
     isError,
     error
-  } = useGetInterviewsQuery(undefined, {
+  } = useGetInterviewsQuery('interviewsList', {
     pollingInterval: 15000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true

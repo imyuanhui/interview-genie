@@ -12,7 +12,7 @@ InterviewGenie is an AI-powered mock interview assistant designed and developed 
 
 ### As a Registered User:
 
-1. [ ] Log in to the InterviewGenie account.
+1. [x] Log in to the InterviewGenie account.
 1. [x] Have a personalized dashboard after logging in.
 1. [ ] Have a guidance for how to initialize a new mock interview after first logging in.
 1. [ ] Create a new mock interview by inputting job details.
@@ -21,7 +21,7 @@ InterviewGenie is an AI-powered mock interview assistant designed and developed 
 1. [ ] Record responses during mock interview practice sessions.
 1. [ ] Receive feedback on my mock interview performance, if available.
 1. [ ] Update profile information.
-1. [ ] Log out of the InterviewGenie account.
+1. [x] Log out of the InterviewGenie account.
 
 ## Features
 
