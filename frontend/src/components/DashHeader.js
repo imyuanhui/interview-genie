@@ -3,18 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faRightFromBracket,
     faFileCirclePlus,
-    faFilePen,
+    faFolder,
     faUserGear,
-    faUserPlus
+    faUserPlus,
+    faUser
 } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 
-const DASH_REGEX = /^\/dash(\/)?$/
+//const DASH_REGEX = /^\/dash(\/)?$/
 const INTERVIEWS_REGEX = /^\/dash\/interviews(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
+const PROFILE_REGEX = /^\/dash\/profile(\/)?$/
 
 const DashHeader = () => {
 
@@ -38,15 +40,11 @@ const DashHeader = () => {
     const onNewUserClicked = () => navigate('/dash/users/new')
     const onInterviewsClicked = () => navigate('/dash/interviews')
     const onUsersClicked = () => navigate('/dash/users')
-
-    let dashClass = null
-    if (!DASH_REGEX.test(pathname) && !INTERVIEWS_REGEX.test(pathname) && !USERS_REGEX.test(pathname)) {
-        dashClass = "dash-header__container--small"
-    }
+    const onProfileClicked = () => navigate('/dash/profile')
 
     const logoutBtn = (
         <button
-            className='icon-button'
+            className='icon-button dash-header-button'
             title='Logout'
             onClick={sendLogout}
         >
@@ -58,7 +56,7 @@ const DashHeader = () => {
     if (INTERVIEWS_REGEX.test(pathname)) {
         newInterviewBtn = (
             <button
-                className='icon-button'
+                className='icon-button dash-header-button'
                 title='New Interview'
                 onClick={onNewInterviewClicked}
             >
@@ -72,7 +70,7 @@ const DashHeader = () => {
         if (USERS_REGEX.test(pathname)) {
             newUserBtn = (
                 <button
-                    className='icon-button'
+                    className='icon-button dash-header-button'
                     title='New User'
                     onClick={onNewUserClicked}
                 >
@@ -88,7 +86,7 @@ const DashHeader = () => {
         if (!USERS_REGEX.test(pathname) && pathname.includes('/dash')) {
             usersBtn = (
                 <button
-                    className='icon-button'
+                    className='icon-button dash-header-button'
                     title='Users'
                     onClick={onUsersClicked}
                 >
@@ -102,11 +100,24 @@ const DashHeader = () => {
     if (!INTERVIEWS_REGEX.test(pathname) && pathname.includes('/dash')) {
         interviewsBtn = (
             <button
-                className='icon-button'
+                className='icon-button dash-header-button'
                 title='Interviews'
                 onClick={onInterviewsClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FontAwesomeIcon icon={faFolder} />
+            </button>
+        )
+    }
+
+    let profileBtn = null
+    if (!PROFILE_REGEX.test(pathname) && pathname.includes('/dash') && !isAdmin) {
+        profileBtn = (
+            <button
+                className='icon-button dash-header-button'
+                title='Profile'
+                onClick={onProfileClicked}
+            >
+                <FontAwesomeIcon icon={faUser}/>
             </button>
         )
     }
@@ -119,6 +130,7 @@ const DashHeader = () => {
     } else {
         btnContent = (
             <>
+                {profileBtn}
                 {newUserBtn}
                 {newInterviewBtn}
                 {usersBtn}
@@ -133,7 +145,7 @@ const DashHeader = () => {
             <p className={errClass}>{error?.data?.message}</p>
 
             <header className="dash-header">
-                <div className={`dash-header__container ${dashClass}`}>
+                <div className='dash-header__container'>
                     <Link to="/dash">
                         <h1 className="dash-header__title">InterviewGenie</h1>
                     </Link>

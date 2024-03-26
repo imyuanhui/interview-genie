@@ -10,7 +10,8 @@ import UsersList from './features/users/UsersList'
 import EditUser from './features/users/EditUser' 
 import NewUserForm from './features/users/NewUserForm' 
 import EditInterview from './features/interviews/EditInterview' 
-import NewInterview from './features/interviews/NewInterview' 
+import NewInterview from './features/interviews/NewInterview'
+import UserProfile from './features/users/UserProfile' 
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
 import RequireAuth from './features/auth/RequireAuth'
@@ -45,6 +46,10 @@ function App() {
                   <Route index element={<InterviewsList />} />
                   <Route path=":id" element={<EditInterview />} />
                   <Route path="new" element={<NewInterview />} />
+                </Route>
+
+                <Route path='profile'>
+                  <Route index element={<UserProfile />} />
                 </Route>
 
                 </Route> {/* End Dash */}

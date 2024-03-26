@@ -26,6 +26,7 @@ const NewInterviewForm = ({ userID }) => {
 
     useEffect(() => {
         if (isSuccess) {
+            console.log('save successfully')
             setTitle('')
             setPosition("")
             setKeySkills([])
@@ -47,7 +48,9 @@ const NewInterviewForm = ({ userID }) => {
 
     const onSaveInterviewClicked = async (e) => {
         e.preventDefault()
+        console.log('save clicked')
         if (canSave) {
+            console.log('canSava is true')
             await addNewInterview({ user, title, position, keySkills, experience, industry, company })
         }
     }
@@ -73,6 +76,7 @@ const NewInterviewForm = ({ userID }) => {
             <p className={errClass}>{error?.data?.message}</p>
 
             <form className='form' onSubmit={onSaveInterviewClicked}>
+                
                 <div className='form__title-row'>
                     <h2>New Interview</h2>
                     <div className='form__action-buttons'>
@@ -80,8 +84,8 @@ const NewInterviewForm = ({ userID }) => {
                             className='icon-button'
                             title='save'
                             disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave}/>
+                            >
+                            <FontAwesomeIcon icon={faSave} />
                         </button>
                     </div>
                 </div>

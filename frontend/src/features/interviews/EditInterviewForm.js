@@ -86,7 +86,7 @@ const EditInterviewForm = ({ interview }) => {
       <form className='form' onSubmit={onSaveInterviewClicked}>
 
         <div className='form__title-row'>
-          <h2>New Interview</h2>
+          <h2>Edit Interview</h2>
           <div className='form__action-buttons'>
             <button
               className='icon-button'

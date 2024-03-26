@@ -54,7 +54,7 @@ const InterviewsList = () => {
       )
     } else {
 
-      const filteredIds = ids.filter(interviewId => entities[interviewId].username === username) // change later
+      const filteredIds = ids.filter(interviewId => entities[interviewId].username === username) 
       const cardContent = ids?.length && filteredIds.map(interviewId => <InterviewCard key={interviewId} interviewId={interviewId} />)
 
       content = (

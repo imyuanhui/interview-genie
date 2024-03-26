@@ -8,7 +8,7 @@ const RequireAuth = ({ allowedPermissions }) => {
     const content = (
         permissions.some(permission => allowedPermissions.includes(permission))
             ? <Outlet />
-            : <Navigate to='/dash' state={{ from: location }} replace />
+            : <Navigate to='/login' state={{ from: location }} replace />
     )
 
     return content
