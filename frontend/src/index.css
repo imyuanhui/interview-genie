@@ -299,6 +299,52 @@ tr {
   color: var(--STATUS-FINISHED);
 }
 
+/* || CARD -GENERAL */
+.card--interviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.interview__card {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.interview__card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.interview__card p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.card-details {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.interview__card.expanded {
+  height: auto;
+  border-color: #666;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.interview__card.expanded .card-details {
+  display: block;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
 
 /* || FORM - GENERAL */
 

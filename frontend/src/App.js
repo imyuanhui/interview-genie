@@ -13,36 +13,44 @@ import EditInterview from './features/interviews/EditInterview'
 import NewInterview from './features/interviews/NewInterview' 
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
+import RequireAuth from './features/auth/RequireAuth'
+import { PERMISSIONS } from './config/permissions'
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        {/* public routes */}
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
         <Route path='signup' element={<Signup />} />
 
+        {/* protected routes */}
         <Route element={<PersistLogin />}>
-          <Route element={<Prefetch />}>
-            <Route path="dash" element={<DashLayout />}>
+          <Route element={<RequireAuth allowedPermissions={[...Object.values(PERMISSIONS)]} />}>
+            <Route element={<Prefetch />}>
+              <Route path="dash" element={<DashLayout />}>
 
-              <Route index element={<Welcome />} />
+                <Route index element={<Welcome />} />
 
-              <Route path="users">
-                <Route index element={<UsersList />} />
-                <Route path=":id" element={<EditUser />} />
-                <Route path="new" element={<NewUserForm />} />
+                <Route element={<RequireAuth allowedPermissions={[PERMISSIONS.Adimin]} />}>
+                  <Route path="users">
+                    <Route index element={<UsersList />} />
+                    <Route path=":id" element={<EditUser />} />
+                    <Route path="new" element={<NewUserForm />} />
+                  </Route>
+                </Route>
+
+                <Route path="interviews">
+                  <Route index element={<InterviewsList />} />
+                  <Route path=":id" element={<EditInterview />} />
+                  <Route path="new" element={<NewInterview />} />
+                </Route>
+
+                </Route> {/* End Dash */}
               </Route>
-
-              <Route path="interviews">
-                <Route index element={<InterviewsList />} />
-                <Route path=":id" element={<EditInterview />} />
-                <Route path="new" element={<NewInterview />} />
-              </Route>
-
-              </Route>{/* End Dash */}
-            </Route>
           </Route>
+         </Route> {/* End protected routes */}
 
       </Route>
     </Routes>

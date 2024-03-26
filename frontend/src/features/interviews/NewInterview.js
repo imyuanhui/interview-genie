@@ -1,15 +1,22 @@
+import { selectAllUsers } from '../users/usersApiSlice'
 import { useSelector } from "react-redux"
-import { selectUserById } from "../users/usersApiSlice"
 import NewInterviewForm from './NewInterviewForm'
+import useAuth from "../../hooks/useAuth"
+import NewInterviewFormAdmin from './NewInterviewFormAdmin'
 
 const NewInterview = () => {
 
-  const user = useSelector(state => selectUserById(state, "65fd1f212b5247628ced365c")) //use ella's id for test
+  const { id, isAdmin } = useAuth()
 
-  if (!user) return <p>Not Currently Available</p>
+  const users = useSelector(state => selectAllUsers(state))
 
-  const content = user ? <NewInterviewForm userID={user.id} /> : <p>Loading</p>
+  let content
 
+  if (isAdmin) {    
+    content = <NewInterviewFormAdmin users={users} />
+  } else {
+    content = <NewInterviewForm userID={id} />
+  }
   return content
 }
 
